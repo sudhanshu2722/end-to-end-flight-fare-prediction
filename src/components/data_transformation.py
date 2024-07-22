@@ -36,18 +36,6 @@ class DataTransformation:
                 'days_left'
                 ]
             
-            '''
-            numerical_transformer = StandardScaler()
-categorical_transformer = OneHotEncoder()
-
-preprocessor= ColumnTransformer(
-    [
-        ('StandardScaler',numerical_transformer,num_features),
-        ('OneHotEncoding',categorical_transformer,cat_features)
-    ]
-)
-            '''
-
             num_pipeline = Pipeline(
                 steps= [
                     ('scaler',StandardScaler())
