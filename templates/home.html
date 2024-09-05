@@ -3,64 +3,129 @@
 
 <head>
     <title>Flight Fare Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            text-align: center;
+            color: #007bff;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="login">
+    <div class="container">
         <h1>Flight Fare Prediction</h1>
-
         <form action="{{ url_for('predict_datapoint') }}" method="post">
-            <h1>
-                <legend>Flight Fare Prediction</legend>
-            </h1>
-            <div class="mb-3">
-                <label class="form-label">Airline</label>
-                <select class="form-control" name="airline" placeholder="Select Airline" required>
-                    <option class="placeholder" selected disabled value="">Select Airline</option>
+            <div class="form-group">
+                <label for="airline">Airline</label>
+                <select id="airline" name="airline" required>
+                    <option value="" disabled selected>Select Airline</option>
                     <option value="Spicejet">Spicejet</option>
                     <option value="AirAsia">AirAsia</option>
                     <option value="Vistara">Vistara</option>
-                    <option value="GO_FIRST">GO_FIRST</option>
+                    <option value="GO_FIRST">GO FIRST</option>
                     <option value="Indigo">Indigo</option>
-                    <option value="Air_India">Air_India</option>
+                    <option value="Air_India">Air India</option>
                 </select>
             </div>
-            <div class="mb-3">
-                <label class="form-control">Source city</label>
-                <select class="form-control" name="source_city" placeholder="Choose your source city" required>
-                    <option class="placeholder" selected disabled value="">Select Source City</option>
+            <div class="form-group">
+                <label for="source_city">Source City</label>
+                <select id="source_city" name="source_city" required>
+                    <option value="" disabled selected>Select Source City</option>
                     <option value="Delhi">Delhi</option>
                     <option value="Mumbai">Mumbai</option>
-                    <option value="Banglore">Banglore</option>
+                    <option value="Bangalore">Bangalore</option>
                     <option value="Kolkata">Kolkata</option>
-                    <option value="Hydrabad">Hydrabad</option>
+                    <option value="Hyderabad">Hyderabad</option>
                     <option value="Chennai">Chennai</option>
                 </select>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Destination City</label>
-                <select class="form-control" name="destination_city" placeholder="Choose your destination city" required>
-                    <option class="placeholder" selected disabled value="">Select Destination City</option>
+            <div class="form-group">
+                <label for="destination_city">Destination City</label>
+                <select id="destination_city" name="destination_city" required>
+                    <option value="" disabled selected>Select Destination City</option>
                     <option value="Delhi">Delhi</option>
                     <option value="Mumbai">Mumbai</option>
-                    <option value="Banglore">Banglore</option>
+                    <option value="Bangalore">Bangalore</option>
                     <option value="Kolkata">Kolkata</option>
-                    <option value="Hydrabad">Hydrabad</option>
+                    <option value="Hyderabad">Hyderabad</option>
                     <option value="Chennai">Chennai</option>
                 </select>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Class</label>
-                <select class="form-control" name="class" placeholder="Choose Class" required>
-                    <option class="placeholder" selected disabled value="">Select Class</option>
+            <div class="form-group">
+                <label for="class_of_journey">Class</label>
+                <select id="class_of_journey" name="class_of_journey" required>
+                    <option value="" disabled selected>Select Class</option>
                     <option value="Economy">Economy</option>
                     <option value="Business">Business</option>
                 </select>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Departure Time</label>
-                <select class="form-control" name="departure_time" placeholder="Choose your departure time" required>
-                    <option class="placeholder" selected disabled value="">Select Departure Time</option>
+            <div class="form-group">
+                <label for="departure_time">Departure Time</label>
+                <select id="departure_time" name="departure_time" required>
+                    <option value="" disabled selected>Select Departure Time</option>
                     <option value="Evening">Evening</option>
                     <option value="Early_morning">Early Morning</option>
                     <option value="Morning">Morning</option>
@@ -69,10 +134,10 @@
                     <option value="Late_night">Late Night</option>
                 </select>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Arrival Time</label>
-                <select class="form-control" name="arrival_time" placeholder="Choose your arrival time" required>
-                    <option class="placeholder" selected disabled value="">Select Arrival Time</option>
+            <div class="form-group">
+                <label for="arrival_time">Arrival Time</label>
+                <select id="arrival_time" name="arrival_time" required>
+                    <option value="" disabled selected>Select Arrival Time</option>
                     <option value="Evening">Evening</option>
                     <option value="Early_morning">Early Morning</option>
                     <option value="Morning">Morning</option>
@@ -81,30 +146,28 @@
                     <option value="Late_night">Late Night</option>
                 </select>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Number of Stops</label>
-                <select class="form-control" name="stops" placeholder="Choose Class" required>
-                    <option class="placeholder" selected disabled value="">Select Number of Stops</option>
+            <div class="form-group">
+                <label for="stops">Number of Stops</label>
+                <select id="stops" name="stops" required>
+                    <option value="" disabled selected>Select Number of Stops</option>
                     <option value="zero">Zero</option>
                     <option value="one">One</option>
                     <option value="two_or_more">Two or More</option>
                 </select>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Days Left (1 to 49)</label>
-                <input class="form-control" type="number" name="days_left" placeholder="Enter days left for flight departure" min="1" max="49" required>
+            <div class="form-group">
+                <label for="days_left">Days Left (1 to 49)</label>
+                <input id="days_left" type="number" name="days_left" min="1" max="49" required>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Duration of Journey (2.17 to 41.5)</label>
-                <input class="form-control" type="number" name="duration" placeholder="Select duration of journey" min="2.17" max="41.5" required>
+            <div class="form-group">
+                <label for="duration">Duration of Journey (2.17 to 41.5 hours)</label>
+                <input id="duration" type="number" step="0.01" name="duration" min="2.17" max="41.5" required>
             </div>
-            <div class="mb-3">
-                <input class="btn btn-primary" type="submit" value="Predict your Flight Fare" />
+            <div class="form-group">
+                <input class="btn" type="submit" value="Predict your Flight Fare">
             </div>
         </form>
-        <h2>
-            The Flight Fare is: {{ results }}
-        </h2>
+        <h2>The Flight Fare is: {{ results }}</h2>
     </div>
 </body>
 

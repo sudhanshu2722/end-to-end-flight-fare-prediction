@@ -45,7 +45,7 @@ class DataTransformation:
 
             cat_pipeline = Pipeline(
                 steps = [
-                    ('one_hot_encoder',OneHotEncoder())
+                    ('one_hot_encoder',OneHotEncoder(handle_unknown='ignore'))
                 ]
             )
 
@@ -88,6 +88,8 @@ class DataTransformation:
             target_feature_test_df = test_df[target_column_name].values
             
             logging.info(f"Applying preprocessing object on training dataframe and testing dataframe.")
+
+            print(input_feature_train_df.head())
 
             input_feature_train_arr = preprocessing_obj.fit_transform(input_feature_train_df).toarray()
             input_feature_test_arr = preprocessing_obj.transform(input_feature_test_df).toarray()
